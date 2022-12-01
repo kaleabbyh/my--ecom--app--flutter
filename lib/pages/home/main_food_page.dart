@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_ecom_app/home/food_page_body.dart';
+import 'package:my_ecom_app/pages/home/food_page_body.dart';
 import 'package:my_ecom_app/utils/colors.dart';
 import 'package:my_ecom_app/utils/dimensions.dart';
 import 'package:my_ecom_app/widgets/big_text.dart';
@@ -15,9 +15,10 @@ class MainFoodPage extends StatefulWidget {
 class _MainFoodPageState extends State<MainFoodPage> {
   @override
   Widget build(BuildContext context) {
-    // print(MediaQuery.of(context).size.width.toString());
-    // print(MediaQuery.of(context).size.height.toString());
+    print(MediaQuery.of(context).size.width.toString());
+    print(MediaQuery.of(context).size.height.toString());
     return Scaffold(
+      backgroundColor: const Color(0xFFF3EFEF),
       body: Column(
         children: [
           Container(
@@ -56,7 +57,8 @@ class _MainFoodPageState extends State<MainFoodPage> {
                     width: Dimensions.height50,
                     height: Dimensions.height50,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Dimensions.width20),
+                      borderRadius:
+                          BorderRadius.circular(Dimensions.borderadius20),
                       color: AppColors.mainColor,
                     ),
                     child: Icon(
@@ -69,7 +71,11 @@ class _MainFoodPageState extends State<MainFoodPage> {
               ],
             ),
           ),
-          FoodPageBody(),
+          Expanded(
+            child: SingleChildScrollView(
+              child: FoodPageBody(),
+            ),
+          ),
         ],
       ),
     );

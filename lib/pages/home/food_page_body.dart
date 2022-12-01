@@ -1,3 +1,5 @@
+// import 'dart:html';
+import 'package:http/http.dart' as http;
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:my_ecom_app/utils/colors.dart';
@@ -37,6 +39,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        //slider section
         Container(
           // color: Colors.red,
           height: Dimensions.pageView,
@@ -48,6 +51,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             },
           ),
         ),
+        //dots section
         // ignore: unnecessary_new
         new DotsIndicator(
           dotsCount: 5,
@@ -58,7 +62,124 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             color: Color.fromARGB(221, 37, 35, 35), // Inactive color
             activeColor: AppColors.mainColor,
           ),
-        )
+        ),
+        //popular section
+
+        SizedBox(
+          height: Dimensions.height30,
+        ),
+
+        //popular section
+        Container(
+          margin: EdgeInsets.only(
+              left: Dimensions.height30, right: Dimensions.height30),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              BigText(text: 'popular'),
+              SizedBox(
+                width: Dimensions.width15,
+              ),
+              Container(
+                child: BigText(
+                  text: '..',
+                  color: Colors.black26,
+                ),
+              ),
+              SizedBox(
+                width: Dimensions.width15,
+              ),
+              Container(
+                child: SmallText(text: 'food pairing'),
+              ),
+            ],
+          ),
+        ),
+
+        //list of foods
+
+        ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: 10,
+          itemBuilder: (context, index) {
+            return Container(
+              margin: EdgeInsets.only(
+                left: Dimensions.width20,
+                right: Dimensions.width20,
+                top: Dimensions.height10,
+                bottom: Dimensions.height10,
+              ),
+              color: Colors.white,
+              child: Row(
+                children: [
+                  Container(
+                    width: Dimensions.width120,
+                    height: Dimensions.height120,
+                    decoration: BoxDecoration(
+                      borderRadius:
+                          BorderRadius.circular(Dimensions.borderadius20),
+                      color: Colors.white,
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage('assets/images/ethiopia1.jpg'),
+                      ),
+                    ),
+                  ),
+                  // SizedBox(width: Dimensions.width20),
+                  Expanded(
+                    child: Container(
+                      height: Dimensions.height120,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(Dimensions.borderadius20),
+                          bottomRight:
+                              Radius.circular(Dimensions.borderadius20),
+                        ),
+                        color: Colors.white,
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.only(left: Dimensions.width10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            BigText(text: 'special coffee of ethiopian'),
+                            SizedBox(height: Dimensions.height15),
+                            SmallText(
+                                text:
+                                    'please visit us,our special coffee is all yours'),
+                            SizedBox(height: Dimensions.height15),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                IconAndTextWidget(
+                                  icon: Icons.circle_sharp,
+                                  text: 'normal',
+                                  iconColor: AppColors.iconColor1,
+                                ),
+                                IconAndTextWidget(
+                                  icon: Icons.location_on,
+                                  text: '1.7 km',
+                                  iconColor: AppColors.mainColor,
+                                ),
+                                IconAndTextWidget(
+                                  icon: Icons.access_time_rounded,
+                                  text: '32min',
+                                  iconColor: AppColors.iconColor2,
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            );
+          },
+        ),
       ],
     );
   }
@@ -100,7 +221,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               right: Dimensions.width15,
             ),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimensions.height30),
+                borderRadius: BorderRadius.circular(Dimensions.borderadius30),
                 image: const DecorationImage(
                   fit: BoxFit.cover,
                   image: AssetImage(
@@ -118,7 +239,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 bottom: Dimensions.height20,
               ),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimensions.height30),
+                  borderRadius: BorderRadius.circular(Dimensions.borderadius30),
                   color: Colors.white,
                   boxShadow: const [
                     BoxShadow(
