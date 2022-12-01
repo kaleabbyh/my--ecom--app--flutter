@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_ecom_app/home/food_page_body.dart';
 import 'package:my_ecom_app/utils/colors.dart';
+import 'package:my_ecom_app/utils/dimensions.dart';
 import 'package:my_ecom_app/widgets/big_text.dart';
 import 'package:my_ecom_app/widgets/small_text.dart';
 
@@ -13,50 +15,61 @@ class MainFoodPage extends StatefulWidget {
 class _MainFoodPageState extends State<MainFoodPage> {
   @override
   Widget build(BuildContext context) {
+    // print(MediaQuery.of(context).size.width.toString());
+    // print(MediaQuery.of(context).size.height.toString());
     return Scaffold(
       body: Column(
         children: [
           Container(
-            child: Container(
-              margin: const EdgeInsets.only(top: 45, bottom: 15),
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    children: [
-                      BigText(
-                        text: 'ethiopia',
-                        color: AppColors.mainColor,
-                      ),
-                      Row(
-                        children: [
-                          SmallText(
-                            text: 'ethiopia',
-                          ),
-                          const Icon(Icons.arrow_drop_down_rounded),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Center(
-                    child: Container(
-                      width: 45,
-                      height: 45,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: AppColors.mainColor,
-                      ),
-                      child: const Icon(
-                        Icons.search,
-                        color: Colors.white,
-                      ),
+            margin: EdgeInsets.only(
+              top: Dimensions.height50,
+              bottom: Dimensions.width20,
+            ),
+            padding: EdgeInsets.only(
+              left: Dimensions.width30,
+              right: Dimensions.width30,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    BigText(
+                      text: 'Ethiopia foods',
+                      color: AppColors.mainColor,
+                    ),
+                    Row(
+                      children: [
+                        SmallText(
+                          text: 'adama',
+                        ),
+                        Icon(
+                          Icons.arrow_drop_down_rounded,
+                          size: Dimensions.iconsize25,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Center(
+                  child: Container(
+                    width: Dimensions.height50,
+                    height: Dimensions.height50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(Dimensions.width20),
+                      color: AppColors.mainColor,
+                    ),
+                    child: Icon(
+                      Icons.search,
+                      size: Dimensions.iconsize25,
+                      color: Colors.white,
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
+          FoodPageBody(),
         ],
       ),
     );
